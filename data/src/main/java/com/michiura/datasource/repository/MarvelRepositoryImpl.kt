@@ -1,6 +1,6 @@
 package com.michiura.data.repository
 
-import com.michiura.data.network.MarvelRemoteService
+import com.michiura.datasource.datasource.remote.MarvelRemoteService
 import com.michiura.data.repository.states.MarvelRepositoryState
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers

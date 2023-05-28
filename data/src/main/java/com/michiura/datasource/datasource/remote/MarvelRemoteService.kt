@@ -1,4 +1,4 @@
-package com.michiura.data.network
+package com.michiura.datasource.datasource.remote
 
 import com.michiura.data.repository.response.CharactersResponse
 import retrofit2.http.GET
