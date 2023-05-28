@@ -1,20 +1,22 @@
 plugins {
-    id 'com.android.application'
+    id 'com.android.library'
     id 'org.jetbrains.kotlin.android'
 }
 
 android {
-    namespace 'com.michiura.marvelcleanarchitecture'
+    namespace 'com.michiura.data'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.michiura.marvelcleanarchitecture"
         minSdk 24
         targetSdk 33
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+
+        buildConfigField('String', 'BASE_URL', '"https://gateway.marvel.com/"')
+        buildConfigField('String', 'PUBLIC_API_KEY', '"faebecefe77bcc0afe33eaf93269a580"')
+        buildConfigField('String', 'PRIVATE_API_KEY', '"b48dce4c341e242a25fdbd2d7ef42d65e1b0eebc"')
     }
 
     buildTypes {
@@ -33,14 +35,13 @@ android {
 }
 
 dependencies {
-    implementation project(":data")
-    implementation project(":domain")
-    implementation project(":presentation")
 
     implementation 'androidx.core:core-ktx:1.6.0'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
