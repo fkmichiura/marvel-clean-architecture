@@ -1,10 +1,9 @@
 package com.michiura.datasource.network.providers
 
-import com.michiura.datasource.commons.constants.Constants
-import com.michiura.datasource.commons.constants.Constants.API_KEY_QUERY_PARAM
-import com.michiura.datasource.commons.constants.Constants.MD5_HASH_QUERY_PARAM
-import com.michiura.datasource.commons.constants.Constants.PUBLIC_API_KEY
-import com.michiura.datasource.commons.constants.Constants.TIMPESTAMP_QUERY_PARAM
+import com.michiura.data.BuildConfig
+import com.michiura.datasource.commons.Constants.MD5_HASH_QUERY_PARAM
+import com.michiura.datasource.commons.Constants.PUBLIC_API_KEY_QUERY_PARAM
+import com.michiura.datasource.commons.Constants.TIMPESTAMP_QUERY_PARAM
 import com.michiura.datasource.network.extensions.getMd5Digest
 import com.michiura.datasource.network.extensions.timestamp
 import okhttp3.Interceptor
@@ -21,7 +20,7 @@ class ProvideAuthInterceptor : Interceptor {
             .url()
             .newBuilder()
             .addQueryParameter(TIMPESTAMP_QUERY_PARAM, Date().timestamp)
-            .addQueryParameter(API_KEY_QUERY_PARAM, PUBLIC_API_KEY)
+            .addQueryParameter(PUBLIC_API_KEY_QUERY_PARAM, BuildConfig.PUBLIC_API_KEY)
             .addQueryParameter(MD5_HASH_QUERY_PARAM, HASH.getMd5Digest)
             .build()
 
@@ -34,6 +33,7 @@ class ProvideAuthInterceptor : Interceptor {
     }
 
     companion object {
-        private var HASH: String = Date().timestamp + Constants.PRIVATE_API_KEY + PUBLIC_API_KEY
+        private var HASH: String =
+            Date().timestamp + BuildConfig.PRIVATE_API_KEY + BuildConfig.PUBLIC_API_KEY
     }
 }

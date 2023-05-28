@@ -1,6 +1,6 @@
 package com.michiura.datasource.network.extensions
 
-import com.michiura.datasource.commons.constants.Constants
+import com.michiura.datasource.commons.Constants
 import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
