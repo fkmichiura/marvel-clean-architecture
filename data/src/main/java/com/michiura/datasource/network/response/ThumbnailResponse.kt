@@ -1,12 +1,12 @@
-package com.michiura.datasource.datasource.remote.response
+package com.michiura.datasource.network.response
 
 import com.google.gson.annotations.SerializedName
 
-class ThumbnailData(
+class ThumbnailResponse(
 
     @SerializedName("path")
-    val thumbnailPath: String,
+    val path: String,
 
     @SerializedName("extension")
-    val thumbnailExtension: String
+    val extension: String
 )

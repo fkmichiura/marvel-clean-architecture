@@ -1,22 +1,22 @@
-package com.michiura.datasource.datasource.remote.response
+package com.michiura.datasource.network.response
 
 import com.google.gson.annotations.SerializedName
 import java.util.Date
 
-data class CharacterData(
+data class CharacterResponse(
 
     @SerializedName("id")
-    val characterId: Int,
+    val id: Int,
 
     @SerializedName("name")
-    val characterName: String,
+    val name: String,
 
     @SerializedName("description")
-    val characterDescription: String,
+    val description: String,
 
     @SerializedName("modified")
-    val characterModifiedDate: Date,
+    val modified: Date,
 
     @SerializedName("thumbnail")
-    val characterThumbnail: ThumbnailData
+    val thumbnail: ThumbnailResponse
 )

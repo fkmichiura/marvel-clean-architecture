@@ -2,7 +2,7 @@ package com.michiura.datasource.network.response
 
 import com.google.gson.annotations.SerializedName
 
-data class CharactersContainerResponse(
+data class CharacterContainerResponse(
 
     @SerializedName("total")
     val total: Int,
@@ -11,5 +11,5 @@ data class CharactersContainerResponse(
     val count: Int,
 
     @SerializedName("results")
-    val charactersList: List<CharacterResponse>
+    val results: List<CharacterResponse>
 )

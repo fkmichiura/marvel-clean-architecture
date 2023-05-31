@@ -1,8 +1,8 @@
-package com.michiura.datasource.repositories
+package com.michiura.domain.repository
 
-import com.michiura.datasource.repositories.states.MarvelRepositoryState
+import com.michiura.datasource.repository.states.RepositoryState
 
 interface MarvelRepository {
-    suspend fun fetchCharactersList(): MarvelRepositoryState
-    suspend fun fetchCharacterDetails(characterId: Int): MarvelRepositoryState
+    suspend fun fetchCharactersList(): RepositoryState
+    suspend fun fetchCharacterDetails(characterId: Int): RepositoryState
 }

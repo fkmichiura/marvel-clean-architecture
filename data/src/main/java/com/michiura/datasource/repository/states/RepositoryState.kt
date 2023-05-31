@@ -1,11 +1,9 @@
 package com.michiura.datasource.repository.states
 
 import com.michiura.datasource.network.response.CharacterWrapperResponse
-import com.michiura.domain.states.MarvelResult
 
-sealed class MarvelRepositoryState {
-    data class MarvelResponseSuccess(val response: CharacterWrapperResponse) :
-        MarvelResult()
+sealed class RepositoryState {
+    data class ResponseSuccess(val response: CharacterWrapperResponse) : RepositoryState()
 
-    data class MarvelResponseError(val errorMessage: String) : MarvelResult()
+    data class ResponseError(val errorMessage: String) : RepositoryState()
 }

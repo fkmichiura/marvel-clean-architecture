@@ -1,8 +1,8 @@
-package com.michiura.datasource.repositories
+package com.michiura.datasource.repository
 
 import com.michiura.datasource.datasource.remote.MarvelRemoteService
-import com.michiura.datasource.mappers.CharactersDataMapper
-import com.michiura.datasource.repositories.states.MarvelRepositoryState
+import com.michiura.datasource.repository.states.RepositoryState
+import com.michiura.domain.repository.MarvelRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
@@ -12,35 +12,25 @@ class MarvelRepositoryImpl(
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) : MarvelRepository {
 
-    override suspend fun fetchCharactersList(): MarvelRepositoryState =
+    override suspend fun fetchCharactersList(): RepositoryState =
         withContext(dispatcher) {
             return@withContext try {
                 val response = marvelRemoteService.getCharactersList()
-
-                MarvelRepositoryState.MarvelResponseSuccess(
-                    response = CharactersDataMapper().mapCharacterWrapperResponseToEntity(
-                        characterWrapperResponse = response
-                    )
-                )
+                RepositoryState.ResponseSuccess(response = response)
             } catch (e: Exception) {
-                MarvelRepositoryState.MarvelResponseError(
+                RepositoryState.ResponseError(
                     errorMessage = e.message.toString()
                 )
             }
         }
 
-    override suspend fun fetchCharacterDetails(characterId: Int): MarvelRepositoryState =
+    override suspend fun fetchCharacterDetails(characterId: Int): RepositoryState =
         withContext(dispatcher) {
             return@withContext try {
                 val response = marvelRemoteService.getCharacterDetails(characterId = characterId)
-
-                MarvelRepositoryState.MarvelResponseSuccess(
-                    response = CharactersDataMapper().mapCharacterWrapperResponseToEntity(
-                        characterWrapperResponse = response
-                    )
-                )
+                RepositoryState.ResponseSuccess(response = response)
             } catch (e: Exception) {
-                MarvelRepositoryState.MarvelResponseError(
+                RepositoryState.ResponseError(
                     errorMessage = e.message.toString()
                 )
             }

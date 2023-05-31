@@ -1,7 +1,7 @@
-package com.michiura.domain.usecases.characterslist
+package com.michiura.domain.usecases.characterdetails
 
-import com.michiura.domain.repositories.states.MarvelRepositoryState
+import com.michiura.domain.entities.CharacterContainerEntity
 
-interface CharactersListUseCase {
-    suspend fun fetchCharactersList(): MarvelRepositoryState
+interface CharacterDetailsUseCase {
+    suspend fun fetchCharacterDetails(characterId: Int): Result<CharacterContainerEntity>
 }
