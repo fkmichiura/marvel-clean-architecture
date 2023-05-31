@@ -1,4 +1,4 @@
-package com.michiura.data.repository.response
+package com.michiura.domain.entities
 
 import com.google.gson.annotations.SerializedName
 import java.util.Date

@@ -1,4 +1,4 @@
-package com.michiura.data.repository.response
+package com.michiura.datasource.network.response
 
 import com.google.gson.annotations.SerializedName
 
@@ -11,5 +11,5 @@ data class CharactersResponse(
     val status: String,
 
     @SerializedName("data")
-    val data: CharactersListData
+    val data: CharactersContainerResponse
 )
