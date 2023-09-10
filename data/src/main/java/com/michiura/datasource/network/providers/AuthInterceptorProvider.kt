@@ -1,7 +1,7 @@
 package com.michiura.datasource.network.providers
 
 import com.michiura.data.BuildConfig
-import com.michiura.datasource.commons.Constants.MD5_HASH_QUERY_PARAM
+import com.michiura.datasource.commons.Constants.MD5.HASH_QUERY_PARAM
 import com.michiura.datasource.commons.Constants.PUBLIC_API_KEY_QUERY_PARAM
 import com.michiura.datasource.commons.Constants.TIMPESTAMP_QUERY_PARAM
 import com.michiura.datasource.network.extensions.getMd5Digest
@@ -21,7 +21,7 @@ class ProvideAuthInterceptor : Interceptor {
             .newBuilder()
             .addQueryParameter(TIMPESTAMP_QUERY_PARAM, Date().timestamp)
             .addQueryParameter(PUBLIC_API_KEY_QUERY_PARAM, BuildConfig.PUBLIC_API_KEY)
-            .addQueryParameter(MD5_HASH_QUERY_PARAM, HASH.getMd5Digest)
+            .addQueryParameter(HASH_QUERY_PARAM, HASH.getMd5Digest)
             .build()
 
         return chain.proceed(

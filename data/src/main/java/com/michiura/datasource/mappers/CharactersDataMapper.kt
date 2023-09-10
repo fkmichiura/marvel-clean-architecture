@@ -1,4 +1,4 @@
-package com.michiura.datasource.mappers
+package com.michiura.domain.mappers
 
 import com.michiura.datasource.network.response.CharacterWrapperResponse
 import com.michiura.domain.entities.CharacterContainerEntity
