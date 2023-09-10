@@ -4,7 +4,6 @@ import com.google.gson.annotations.SerializedName
 import java.util.Date
 
 data class CharacterResponse(
-
     @SerializedName("id")
     val id: Int,
 

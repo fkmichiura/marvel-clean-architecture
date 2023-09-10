@@ -1,9 +1,9 @@
 package com.michiura.datasource.repository.states
 
-import com.michiura.datasource.network.response.CharacterWrapperResponse
+import com.michiura.datasource.entities.CharacterContainerEntity
 
-sealed class RepositoryState {
-    data class ResponseSuccess(val response: CharacterWrapperResponse) : RepositoryState()
+sealed class Result {
+    data class Success(val response: CharacterContainerEntity) : Result()
 
-    data class ResponseError(val errorMessage: String) : RepositoryState()
+    data class Error(val errorMessage: String) : Result()
 }

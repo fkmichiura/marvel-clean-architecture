@@ -1,4 +1,4 @@
-package com.michiura.domain.entities
+package com.michiura.datasource.entities
 
 import java.util.Date
 

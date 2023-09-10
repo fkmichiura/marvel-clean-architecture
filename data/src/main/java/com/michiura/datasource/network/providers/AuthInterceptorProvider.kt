@@ -10,7 +10,7 @@ import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.Date
 
-class ProvideAuthInterceptor : Interceptor {
+class AuthInterceptorProvider : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
 

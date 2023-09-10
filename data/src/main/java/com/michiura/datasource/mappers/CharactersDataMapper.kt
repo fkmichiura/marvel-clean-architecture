@@ -1,11 +1,11 @@
-package com.michiura.domain.mappers
+package com.michiura.datasource.mappers
 
 import com.michiura.datasource.network.response.CharacterWrapperResponse
-import com.michiura.domain.entities.CharacterContainerEntity
-import com.michiura.domain.entities.CharacterEntity
-import com.michiura.domain.entities.ThumbnailEntity
+import com.michiura.datasource.entities.CharacterContainerEntity
+import com.michiura.datasource.entities.CharacterEntity
+import com.michiura.datasource.entities.ThumbnailEntity
 
-class CharactersDataMapper {
+object CharactersDataMapper {
 
     fun mapCharacterWrapperResponseToEntity(
         characterWrapperResponse: CharacterWrapperResponse

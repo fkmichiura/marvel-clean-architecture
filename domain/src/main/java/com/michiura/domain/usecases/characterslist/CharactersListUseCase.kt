@@ -1,10 +1,11 @@
 package com.michiura.domain.usecases.characterslist
 
-import com.michiura.domain.repository.MarvelRepository
-import com.michiura.domain.states.MarvelResult
+import com.michiura.datasource.repository.MarvelRepository
+import com.michiura.datasource.repository.states.Result
 
-class CharactersListUseCaseImpl(private val repository: MarvelRepository) : CharactersListUseCase {
-
-    override suspend fun fetchCharactersList(): MarvelResult =
+class CharactersListUseCase(
+    private val repository: MarvelRepository
+) {
+    suspend operator fun invoke(): Result =
         repository.fetchCharactersList()
 }
