@@ -10,7 +10,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
 class MarvelRepository(
-    private val marvelRemoteService: MarvelRemoteService = MarvelServiceFactory.getMarvelService(),
+    private val marvelRemoteService: MarvelRemoteService,
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
 ) {
     suspend fun fetchCharactersList(): Result<List<CharacterEntity>> =

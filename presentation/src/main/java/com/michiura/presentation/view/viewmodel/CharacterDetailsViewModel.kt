@@ -1,4 +1,4 @@
-package com.michiura.presentation.viewmodel
+package com.michiura.presentation.view.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import com.michiura.domain.usecase.characterdetails.CharacterDetailsUseCase
 import com.michiura.presentation.state.ViewState
 import kotlinx.coroutines.launch
 
-class MarvelCharacterDetailsViewModel(
+class CharacterDetailsViewModel(
     private val characterDetailsUseCase: CharacterDetailsUseCase
 ) : ViewModel() {
 
