@@ -1,46 +1,43 @@
-package com.michiura.datasource.repository
+package com.michiura.domain.repository
 
 import com.michiura.datasource.datasource.remote.MarvelRemoteService
-import com.michiura.datasource.mappers.CharactersDataMapper
-import com.michiura.datasource.repository.states.Result
+import com.michiura.datasource.network.MarvelServiceFactory
+import com.michiura.domain.repository.entities.CharacterEntity
+import com.michiura.domain.repository.mappers.CharactersDataMapper
+import com.michiura.domain.repository.states.Result
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
-class MarvelRepositoryImpl(
-    private val marvelRemoteService: MarvelRemoteService,
+class MarvelRepository(
+    private val marvelRemoteService: MarvelRemoteService = MarvelServiceFactory.getMarvelService(),
     private val dispatcher: CoroutineDispatcher = Dispatchers.IO
-) : MarvelRepository {
-
-    override suspend fun fetchCharactersList(): Result =
+) {
+    suspend fun fetchCharactersList(): Result<List<CharacterEntity>> =
         withContext(dispatcher) {
             return@withContext try {
                 Result.Success(
-                    response = CharactersDataMapper.mapCharacterWrapperResponseToEntity(
+                    data = CharactersDataMapper.mapCharacterWrapperResponseToCharactersListEntity(
                         characterWrapperResponse = marvelRemoteService.getCharactersList()
                     )
                 )
             } catch (e: Exception) {
-                Result.Error(
-                    errorMessage = e.message.toString()
-                )
+                Result.Error(exception = e)
             }
         }
 
-    override suspend fun fetchCharacterDetails(characterId: Int): Result =
+    suspend fun fetchCharacterDetails(characterId: Int): Result<CharacterEntity> =
         withContext(dispatcher) {
             return@withContext try {
                 Result.Success(
-                    response = CharactersDataMapper.mapCharacterWrapperResponseToEntity(
+                    data = CharactersDataMapper.mapCharacterWrapperResponseToCharacterEntity(
                         characterWrapperResponse = marvelRemoteService.getCharacterDetails(
                             characterId = characterId
                         )
                     )
                 )
             } catch (e: Exception) {
-                Result.Error(
-                    errorMessage = e.message.toString()
-                )
+                Result.Error(exception = e)
             }
         }
 }
