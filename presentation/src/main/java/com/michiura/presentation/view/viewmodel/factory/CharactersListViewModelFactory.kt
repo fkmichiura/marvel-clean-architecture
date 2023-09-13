@@ -1,4 +1,4 @@
-package com.michiura.presentation.view
+package com.michiura.presentation.view.viewmodel.factory
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -9,9 +9,7 @@ import com.michiura.presentation.view.viewmodel.CharactersListViewModel
 
 class CharactersListViewModelFactory : ViewModelProvider.Factory {
     private val charactersListUseCase = CharactersListUseCase(
-        repository = MarvelRepository(
-            marvelRemoteService = MarvelServiceFactory.getMarvelService()
-        )
+        repository = MarvelRepository()
     )
 
     override fun <T : ViewModel> create(modelClass: Class<T>): T {

@@ -6,22 +6,24 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import coil.load
+import coil.transform.CircleCropTransformation
 import com.michiura.domain.repository.entities.CharacterEntity
 import com.michiura.presentation.databinding.FragmentCharactersListBinding
 import com.michiura.presentation.state.ViewState
-import com.michiura.presentation.view.CharactersListViewModelFactory
 import com.michiura.presentation.view.viewmodel.CharactersListViewModel
-import java.lang.Exception
+import com.michiura.presentation.view.viewmodel.factory.CharactersListViewModelFactory
 
 class CharactersListFragment : Fragment() {
 
     private lateinit var binding: FragmentCharactersListBinding
 
-    private val viewModel: CharactersListViewModel =
+    private val viewModel: CharactersListViewModel by lazy {
         ViewModelProvider(
             owner = this,
             factory = CharactersListViewModelFactory()
         )[CharactersListViewModel::class.java]
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,14 +38,19 @@ class CharactersListFragment : Fragment() {
 
         viewModel.getCharactersList()
         observeViewStates()
+
     }
 
     private fun observeViewStates() {
         viewModel.charactersListViewState.observe(viewLifecycleOwner) {
-            when(it) {
+            when (it) {
                 is ViewState.Success<List<CharacterEntity>> -> {
-                    print("list: ${it.data}")
+                    binding.ivAvatar.load(data = it.data.first().characterThumbnail.thumbnailFullPath) {
+                        crossfade(true)
+                        transformations(CircleCropTransformation())
+                    }
                 }
+
                 is ViewState.Error -> {
 
                 }

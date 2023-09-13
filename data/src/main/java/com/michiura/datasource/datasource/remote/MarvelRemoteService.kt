@@ -7,10 +7,10 @@ import retrofit2.http.Path
 
 interface MarvelRemoteService {
     @GET(Endpoints.CHARACTERS)
-    fun getCharactersList(): CharacterWrapperResponse
+    suspend fun getCharactersList(): CharacterWrapperResponse
 
     @GET("${Endpoints.CHARACTERS}/{id}")
-    fun getCharacterDetails(
+    suspend fun getCharacterDetails(
         @Path("id") characterId: Int
     ): CharacterWrapperResponse
 }

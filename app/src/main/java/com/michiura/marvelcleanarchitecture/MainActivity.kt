@@ -2,6 +2,7 @@ package com.michiura.marvelcleanarchitecture
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.michiura.presentation.view.fragment.CharacterDetailsFragment
 import com.michiura.presentation.view.fragment.CharactersListFragment
 
 class MainActivity : AppCompatActivity() {
@@ -13,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun initFragment() {
         supportFragmentManager.beginTransaction()
-            .replace(R.id.containerView, CharactersListFragment())
+            .replace(R.id.containerView, CharacterDetailsFragment())
             .commit()
     }
 }
