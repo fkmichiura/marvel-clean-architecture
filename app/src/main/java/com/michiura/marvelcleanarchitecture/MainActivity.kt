@@ -1,11 +1,20 @@
 package com.michiura.marvelcleanarchitecture
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import com.michiura.presentation.view.fragment.CharacterDetailsFragment
+import com.michiura.presentation.view.fragment.CharactersListFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initFragment()
+    }
+
+    private fun initFragment() {
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.containerView, CharacterDetailsFragment())
+            .commit()
     }
 }

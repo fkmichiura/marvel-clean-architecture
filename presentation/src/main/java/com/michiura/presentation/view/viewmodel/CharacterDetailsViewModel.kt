@@ -1,29 +1,30 @@
-package com.michiura.presentation.viewmodel
+package com.michiura.presentation.view.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.michiura.domain.repository.entities.CharacterEntity
+import com.michiura.domain.repository.entities.CharacterDetailsEntity
 import com.michiura.domain.repository.states.Result
 import com.michiura.domain.usecase.characterdetails.CharacterDetailsUseCase
 import com.michiura.presentation.state.ViewState
 import kotlinx.coroutines.launch
 
-class MarvelCharacterDetailsViewModel(
+class CharacterDetailsViewModel(
     private val characterDetailsUseCase: CharacterDetailsUseCase
 ) : ViewModel() {
 
-    private val _characterDetailsViewState: MutableLiveData<ViewState<CharacterEntity>> =
-        MutableLiveData<ViewState<CharacterEntity>>()
-    val characterDetailsViewState: LiveData<ViewState<CharacterEntity>> = _characterDetailsViewState
+    private val _characterDetailsViewState: MutableLiveData<ViewState<CharacterDetailsEntity>> =
+        MutableLiveData<ViewState<CharacterDetailsEntity>>()
+    val characterDetailsViewState: LiveData<ViewState<CharacterDetailsEntity>> =
+        _characterDetailsViewState
 
     fun getCharacterDetails(characterId: Int) {
 
         viewModelScope.launch {
 
             when (
-                val result: Result<CharacterEntity> = characterDetailsUseCase.invoke(
+                val result: Result<CharacterDetailsEntity> = characterDetailsUseCase.invoke(
                     characterId = characterId
                 )
             ) {
