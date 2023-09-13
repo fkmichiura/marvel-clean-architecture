@@ -2,6 +2,7 @@ package com.michiura.domain.repository
 
 import com.michiura.datasource.datasource.remote.MarvelRemoteService
 import com.michiura.datasource.network.MarvelServiceFactory
+import com.michiura.domain.repository.entities.CharacterDetailsEntity
 import com.michiura.domain.repository.entities.CharacterEntity
 import com.michiura.domain.repository.mappers.CharactersDataMapper
 import com.michiura.domain.repository.states.Result
@@ -26,7 +27,7 @@ class MarvelRepository(
             }
         }
 
-    suspend fun fetchCharacterDetails(characterId: Int): Result<CharacterEntity> =
+    suspend fun fetchCharacterDetails(characterId: Int): Result<CharacterDetailsEntity> =
         withContext(dispatcher) {
             return@withContext try {
                 Result.Success(
