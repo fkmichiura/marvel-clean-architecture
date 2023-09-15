@@ -2,7 +2,8 @@ package com.michiura.marvelcleanarchitecture
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.michiura.presentation.characterdetails.view.CharacterDetailsFragment
+import com.michiura.presentation.characterslist.view.CharactersListFragment
+import com.michiura.presentation.commons.FragmentExt.replaceFragment
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -12,8 +13,9 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun initFragment() {
-        supportFragmentManager.beginTransaction()
-            .replace(R.id.containerView, CharacterDetailsFragment())
-            .commit()
+        this.replaceFragment(
+            containerId = R.id.containerView,
+            CharactersListFragment()
+        )
     }
 }
