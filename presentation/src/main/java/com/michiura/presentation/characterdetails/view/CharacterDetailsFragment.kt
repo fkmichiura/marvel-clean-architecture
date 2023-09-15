@@ -1,4 +1,4 @@
-package com.michiura.presentation.view.fragment
+package com.michiura.presentation.characterdetails.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,14 +6,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import coil.load
 import com.michiura.domain.repository.entities.CharacterDetailsEntity
 import com.michiura.presentation.R
+import com.michiura.presentation.characterdetails.viewmodel.CharacterDetailsViewModel
+import com.michiura.presentation.characterdetails.viewmodel.CharacterDetailsViewModelFactory
+import com.michiura.presentation.characterslist.view.CharactersListFragment
+import com.michiura.presentation.commons.ViewState
 import com.michiura.presentation.databinding.FragmentCharacterDetailsBinding
-import com.michiura.presentation.state.ViewState
-import com.michiura.presentation.view.viewmodel.CharacterDetailsViewModel
-import com.michiura.presentation.view.viewmodel.factory.CharacterDetailsViewModelFactory
 
 class CharacterDetailsFragment : Fragment() {
 
@@ -21,11 +22,8 @@ class CharacterDetailsFragment : Fragment() {
 
     private lateinit var characterId: String
 
-    private val viewModel: CharacterDetailsViewModel by lazy {
-        ViewModelProvider(
-            owner = this,
-            factory = CharacterDetailsViewModelFactory()
-        )[CharacterDetailsViewModel::class.java]
+    private val viewModel: CharacterDetailsViewModel by activityViewModels {
+        CharacterDetailsViewModelFactory()
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
