@@ -1,28 +1,25 @@
-package com.michiura.presentation.view.fragment
+package com.michiura.presentation.characterslist.view
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
+import androidx.fragment.app.activityViewModels
 import coil.load
 import coil.transform.CircleCropTransformation
 import com.michiura.domain.repository.entities.CharacterEntity
+import com.michiura.presentation.characterslist.viewmodel.CharactersListViewModel
+import com.michiura.presentation.characterslist.viewmodel.CharactersListViewModelFactory
+import com.michiura.presentation.commons.ViewState
 import com.michiura.presentation.databinding.FragmentCharactersListBinding
-import com.michiura.presentation.state.ViewState
-import com.michiura.presentation.view.viewmodel.CharactersListViewModel
-import com.michiura.presentation.view.viewmodel.factory.CharactersListViewModelFactory
 
 class CharactersListFragment : Fragment() {
 
     private lateinit var binding: FragmentCharactersListBinding
 
-    private val viewModel: CharactersListViewModel by lazy {
-        ViewModelProvider(
-            owner = this,
-            factory = CharactersListViewModelFactory()
-        )[CharactersListViewModel::class.java]
+    private val viewModel: CharactersListViewModel by activityViewModels {
+        CharactersListViewModelFactory()
     }
 
     override fun onCreateView(
@@ -38,7 +35,6 @@ class CharactersListFragment : Fragment() {
 
         viewModel.getCharactersList()
         observeViewStates()
-
     }
 
     private fun observeViewStates() {

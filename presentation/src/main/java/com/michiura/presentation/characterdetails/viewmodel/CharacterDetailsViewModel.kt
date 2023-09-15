@@ -1,4 +1,4 @@
-package com.michiura.presentation.view.viewmodel
+package com.michiura.presentation.characterdetails.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.michiura.domain.repository.entities.CharacterDetailsEntity
 import com.michiura.domain.repository.states.Result
 import com.michiura.domain.usecase.characterdetails.CharacterDetailsUseCase
-import com.michiura.presentation.state.ViewState
+import com.michiura.presentation.commons.ViewState
 import kotlinx.coroutines.launch
 
 class CharacterDetailsViewModel(
