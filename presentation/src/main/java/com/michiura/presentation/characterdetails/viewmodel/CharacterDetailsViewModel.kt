@@ -23,18 +23,22 @@ class CharacterDetailsViewModel(
 
         viewModelScope.launch {
 
+            _characterDetailsViewState.value = ViewState.Loading(showLoading = true)
+
             when (
                 val result: Result<CharacterDetailsEntity> = characterDetailsUseCase.invoke(
                     characterId = characterId
                 )
             ) {
                 is Result.Success -> {
+                    _characterDetailsViewState.value = ViewState.Loading()
                     _characterDetailsViewState.postValue(
                         ViewState.Success(data = result.data)
                     )
                 }
 
                 is Result.Error -> {
+                    _characterDetailsViewState.value = ViewState.Loading()
                     _characterDetailsViewState.postValue(
                         ViewState.Error(exception = result.exception)
                     )
