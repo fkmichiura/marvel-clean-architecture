@@ -1,0 +1,52 @@
+package com.michiura.presentation.characterslist.view
+
+import android.annotation.SuppressLint
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
+import coil.load
+import com.michiura.domain.repository.entities.CharacterEntity
+import com.michiura.presentation.R
+
+class CharactersListAdapter(
+    private val onCharacterItemClicked: (Int) -> Unit
+) : RecyclerView.Adapter<CharactersListAdapter.ViewHolder>() {
+
+    private var charactersList: List<CharacterEntity> = emptyList()
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.characters_list_item, parent, false)
+        return ViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) =
+        holder.bind(
+            character = charactersList[position],
+            onCharacterItemClicked = onCharacterItemClicked
+        )
+
+    override fun getItemCount(): Int = charactersList.size
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun addCharacters(characters: List<CharacterEntity>) {
+        charactersList = characters
+        notifyDataSetChanged()
+    }
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val characterAvatar: ImageView = itemView.findViewById(R.id.iv_character_item_avatar)
+        private val characterName: TextView = itemView.findViewById(R.id.tv_character_item_name)
+
+        fun bind(character: CharacterEntity, onCharacterItemClicked: (Int) -> Unit) {
+            characterAvatar.load(data = character.characterThumbnail.thumbnailFullPath) {
+                crossfade(true)
+            }
+            characterName.text = character.characterName
+            itemView.setOnClickListener { onCharacterItemClicked.invoke(character.characterId) }
+        }
+    }
+}

@@ -23,16 +23,20 @@ class CharactersListViewModel(
 
         viewModelScope.launch {
 
+            _charactersListViewState.value = ViewState.Loading(showLoading = true)
+
             when (
                 val result: Result<List<CharacterEntity>> = charactersListUseCase.invoke()
             ) {
                 is Result.Success -> {
+                    _charactersListViewState.value = ViewState.Loading()
                     _charactersListViewState.postValue(
                         ViewState.Success(data = result.data)
                     )
                 }
 
                 is Result.Error -> {
+                    _charactersListViewState.value = ViewState.Loading()
                     _charactersListViewState.postValue(
                         ViewState.Error(exception = result.exception)
                     )

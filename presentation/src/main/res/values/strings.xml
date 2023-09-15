@@ -3,4 +3,5 @@
     <string name="character_details">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</string>
 
     <string name="fetch_character_details_error_message">Houve um erro ao recuperar as informações.</string>
+    <string name="network_loading_message">Carregando…</string>
 </resources>
