@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/material_dynamic_primary0"
-    tools:context=".view.fragment.CharacterDetailsFragment">
+    tools:context=".characterdetails.view.CharacterDetailsFragment">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/iv_avatar"
