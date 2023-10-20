@@ -2,7 +2,7 @@ package com.michiura.presentation.characterdetails.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.michiura.domain.repository.MarvelRepository
+import com.michiura.datasource.repository.MarvelRepository
 import com.michiura.domain.usecase.characterdetails.CharacterDetailsUseCase
 
 class CharacterDetailsViewModelFactory : ViewModelProvider.Factory {

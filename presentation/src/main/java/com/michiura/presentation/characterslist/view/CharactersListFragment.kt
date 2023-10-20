@@ -10,7 +10,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.michiura.domain.repository.entities.CharacterEntity
+import com.michiura.domain.entities.CharacterEntity
 import com.michiura.presentation.R
 import com.michiura.presentation.characterdetails.view.CharacterDetailsFragment
 import com.michiura.presentation.characterslist.viewmodel.CharactersListViewModel

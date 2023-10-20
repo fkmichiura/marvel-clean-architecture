@@ -1,4 +1,4 @@
-package com.michiura.domain.repository.entities
+package com.michiura.domain.entities
 
 class ThumbnailEntity(
     val thumbnailFullPath: String

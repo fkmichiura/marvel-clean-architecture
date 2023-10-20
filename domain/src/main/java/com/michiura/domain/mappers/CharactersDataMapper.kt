@@ -1,9 +1,9 @@
-package com.michiura.domain.repository.mappers
+package com.michiura.domain.mappers
 
 import com.michiura.datasource.network.response.CharacterWrapperResponse
-import com.michiura.domain.repository.entities.CharacterDetailsEntity
-import com.michiura.domain.repository.entities.CharacterEntity
-import com.michiura.domain.repository.entities.ThumbnailEntity
+import com.michiura.domain.entities.CharacterDetailsEntity
+import com.michiura.domain.entities.CharacterEntity
+import com.michiura.domain.entities.ThumbnailEntity
 
 object CharactersDataMapper {
     fun mapCharacterWrapperResponseToCharactersListEntity(
