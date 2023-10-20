@@ -1,7 +1,7 @@
 package com.michiura.datasource.repository
 
 import com.michiura.datasource.datasource.remote.MarvelRemoteService
-import com.michiura.datasource.network.MarvelServiceFactory
+import com.michiura.datasource.datasource.remote.MarvelServiceFactory
 import com.michiura.datasource.network.response.CharacterWrapperResponse
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
