@@ -1,7 +1,6 @@
-package com.michiura.datasource.network
+package com.michiura.datasource.datasource.remote
 
 import com.michiura.data.BuildConfig
-import com.michiura.datasource.datasource.remote.MarvelRemoteService
 import com.michiura.datasource.network.providers.provideOkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
