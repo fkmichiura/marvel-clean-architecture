@@ -9,11 +9,10 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import coil.load
-import com.michiura.domain.repository.entities.CharacterDetailsEntity
+import com.michiura.domain.entities.CharacterDetailsEntity
 import com.michiura.presentation.R
 import com.michiura.presentation.characterdetails.viewmodel.CharacterDetailsViewModel
 import com.michiura.presentation.characterdetails.viewmodel.CharacterDetailsViewModelFactory
-import com.michiura.presentation.characterslist.view.CharactersListFragment
 import com.michiura.presentation.commons.ViewState
 import com.michiura.presentation.databinding.FragmentCharacterDetailsBinding
 

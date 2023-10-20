@@ -4,8 +4,8 @@ import com.michiura.data.BuildConfig
 import com.michiura.datasource.commons.Constants.MD5.HASH_QUERY_PARAM
 import com.michiura.datasource.commons.Constants.PUBLIC_API_KEY_QUERY_PARAM
 import com.michiura.datasource.commons.Constants.TIMPESTAMP_QUERY_PARAM
-import com.michiura.datasource.network.extensions.getMd5Digest
-import com.michiura.datasource.network.extensions.timestamp
+import com.michiura.datasource.network.extensions.AuthExtensions.getMd5Digest
+import com.michiura.datasource.network.extensions.AuthExtensions.timestamp
 import okhttp3.Interceptor
 import okhttp3.Response
 import java.util.Date
@@ -21,7 +21,7 @@ class AuthInterceptorProvider : Interceptor {
             .newBuilder()
             .addQueryParameter(TIMPESTAMP_QUERY_PARAM, Date().timestamp)
             .addQueryParameter(PUBLIC_API_KEY_QUERY_PARAM, BuildConfig.PUBLIC_API_KEY)
-            .addQueryParameter(HASH_QUERY_PARAM, HASH.getMd5Digest)
+            .addQueryParameter(HASH_QUERY_PARAM, getMd5Digest)
             .build()
 
         return chain.proceed(
@@ -30,10 +30,5 @@ class AuthInterceptorProvider : Interceptor {
                 .url(url)
                 .build()
         )
-    }
-
-    companion object {
-        private var HASH: String =
-            Date().timestamp + BuildConfig.PRIVATE_API_KEY + BuildConfig.PUBLIC_API_KEY
     }
 }

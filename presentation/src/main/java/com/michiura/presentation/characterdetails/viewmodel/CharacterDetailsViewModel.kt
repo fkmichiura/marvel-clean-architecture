@@ -4,8 +4,8 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.michiura.domain.repository.entities.CharacterDetailsEntity
-import com.michiura.domain.repository.states.Result
+import com.michiura.domain.entities.CharacterDetailsEntity
+import com.michiura.domain.states.Result
 import com.michiura.domain.usecase.characterdetails.CharacterDetailsUseCase
 import com.michiura.presentation.commons.ViewState
 import kotlinx.coroutines.launch
